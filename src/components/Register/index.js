@@ -13,6 +13,7 @@ import {
 } from 'reactstrap';
 import { getValidationSchemaRegister } from '../../utils/validationSchema';
 import RegisterMutation from '../../grapql/registerMutation';
+import history from '../../history';
 
 const INITIAL_VALUES = {
   firstName: '',
@@ -75,7 +76,6 @@ const LoginFormContainer = () => (
               {props => {
                 const {
                   values,
-                  touched,
                   errors,
                   handleChange,
                   handleBlur,
@@ -173,7 +173,12 @@ const LoginFormContainer = () => (
                         )}
                       </FormGroup>
                     </Col>
-                    <Button>Submit</Button>
+                    <Col>
+                      <Button>Submit</Button>
+                      <a href="" onClick={() => history.push('login')}>
+                        Already have account
+                      </a>
+                    </Col>
                   </Form>
                 );
               }}

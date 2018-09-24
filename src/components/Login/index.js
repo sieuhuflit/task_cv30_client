@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik } from 'formik';
 import { Mutation } from 'react-apollo';
+import history from '../../history';
 import '../../App.css';
 import {
   Col,
@@ -52,7 +53,6 @@ const LoginFormContainer = () => (
               {props => {
                 const {
                   values,
-                  touched,
                   errors,
                   handleChange,
                   handleBlur,
@@ -104,7 +104,12 @@ const LoginFormContainer = () => (
                         )}
                       </FormGroup>
                     </Col>
-                    <Button>Login</Button>
+                    <Col>
+                      <Button>Login</Button>
+                      <a href="" onClick={() => history.push('register')}>
+                        No account yet
+                      </a>
+                    </Col>
                   </Form>
                 );
               }}
