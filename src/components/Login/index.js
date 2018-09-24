@@ -24,6 +24,7 @@ const LoginFormContainer = () => (
   <Container className="App">
     <Mutation mutation={LoginMutation}>
       {(login, { loading, error, data }) => {
+        if (loading) return <p>Loading...</p>;
         if (data) {
           return <pre>{data.login}</pre>;
         }
@@ -103,7 +104,7 @@ const LoginFormContainer = () => (
                         )}
                       </FormGroup>
                     </Col>
-                    <Button>Submit</Button>
+                    <Button>Login</Button>
                   </Form>
                 );
               }}

@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
-import Register from './components/Register/index';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container } from 'reactstrap';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 import Root from './root';
+const cache = new InMemoryCache();
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql'
+  uri: 'http://localhost:4000/graphql',
+  cache
 });
 
 const App = () => {
