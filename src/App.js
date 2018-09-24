@@ -1,21 +1,24 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import Root from './root';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+const cache = new InMemoryCache();
+
+const client = new ApolloClient({
+  uri: 'http://localhost:4000/graphql',
+  cache
+});
+
+const App = () => {
+  return (
+    <ApolloProvider client={client}>
+      <Root />
+    </ApolloProvider>
+  );
+};
 
 export default App;
